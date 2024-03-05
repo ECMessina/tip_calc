@@ -26,6 +26,7 @@ class MainApp extends StatelessWidget {
           ),
         ),
         backgroundColor: const Color.fromARGB(255, 129, 129, 129),
+        resizeToAvoidBottomInset: false,
         body: const DataScreen(),
       ),
     );
