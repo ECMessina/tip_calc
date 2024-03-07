@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CalculateButton extends StatelessWidget {
-  const CalculateButton({super.key});
+  const CalculateButton({super.key, required this.onPressed});
+
+  final Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,7 @@ class CalculateButton extends StatelessWidget {
         ),
         backgroundColor: MaterialStateProperty.all(Colors.green),
       ),
-      onPressed: () {},
+      onPressed: onPressed,
       child: const Text(
         'Calculate',
         style: TextStyle(

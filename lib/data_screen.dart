@@ -4,20 +4,38 @@ import 'package:tip_calc/amount_selector.dart';
 import 'package:tip_calc/output_amount.dart';
 import 'package:tip_calc/percent_selector.dart';
 
-class DataScreen extends StatelessWidget {
+class DataScreen extends StatefulWidget {
   const DataScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    TextEditingController valueController = TextEditingController(text: 15.toString());
-    TextEditingController totalController = TextEditingController(text: 20.toString());
-    int defaultTipPercentage = 20;
-    TextEditingController tipPercentageController = TextEditingController(text: defaultTipPercentage.toString());
-    double tipValue = 15 * defaultTipPercentage / 100;
-    TextEditingController tipValueController = TextEditingController(text: tipValue.toString());
-    double totalValue = 20 + tipValue;
-    TextEditingController totalValueController = TextEditingController(text: totalValue.toString());
+  State<DataScreen> createState() => _DataScreenState();
+}
 
+int defaultPercentTip = 20;
+
+class _DataScreenState extends State<DataScreen> {
+  final TextEditingController valueController = TextEditingController();
+  final TextEditingController totalController = TextEditingController();
+  final TextEditingController tipPercentageController = TextEditingController(text: defaultPercentTip.toString());
+  final TextEditingController tipValueController = TextEditingController();
+  final TextEditingController totalValueController = TextEditingController();
+
+  void tipCalc() {
+    double valueCheck = double.tryParse(valueController.text) ?? 0;
+    double totalCheck = double.tryParse(totalController.text) ?? 0;
+    int tipPercentCheck = int.tryParse(tipPercentageController.text) ?? 0;
+
+    double tipValue = valueCheck * tipPercentCheck / 100;
+    double totalValue = totalCheck + tipValue;
+
+    setState(() {
+      tipValueController.text = tipValue.toString();
+      totalValueController.text = totalValue.toString();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -45,7 +63,9 @@ class DataScreen extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          const CalculateButton(),
+          CalculateButton(
+            onPressed: tipCalc,
+          ),
           const SizedBox(
             height: 20,
           ),
