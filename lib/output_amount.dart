@@ -16,6 +16,18 @@ class OutputAmount extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.green,
+            width: 2,
+          ),
+        ),
+        enabledBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.green,
+            width: 2,
+          ),
+        ),
         icon: const Icon(
           Icons.attach_money,
           color: Colors.green,
@@ -24,6 +36,7 @@ class OutputAmount extends StatelessWidget {
         helperText: helper,
       ),
       controller: controller,
+      readOnly: true,
     );
   }
 }
