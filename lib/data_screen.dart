@@ -32,6 +32,8 @@ class _DataScreenState extends State<DataScreen> {
       tipValueController.text = tipValue.toString();
       totalValueController.text = totalValue.toString();
     });
+
+    FocusScope.of(context).unfocus();
   }
 
   @override
