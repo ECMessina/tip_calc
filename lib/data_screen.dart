@@ -43,7 +43,7 @@ class _DataScreenState extends State<DataScreen> {
       child: Column(
         children: [
           AmountSelector(
-            label: 'Value',
+            label: 'VALUE',
             helper: '(pre-tax, pre-coupon)',
             controller: valueController,
           ),
@@ -51,7 +51,7 @@ class _DataScreenState extends State<DataScreen> {
             height: 20,
           ),
           AmountSelector(
-            label: 'Total',
+            label: 'TOTAL',
             helper: '(prior to tip)',
             controller: totalController,
           ),
@@ -59,7 +59,7 @@ class _DataScreenState extends State<DataScreen> {
             height: 20,
           ),
           PercentSelector(
-            label: 'Tip',
+            label: 'TIP',
             controller: tipPercentageController,
           ),
           const SizedBox(
@@ -72,7 +72,7 @@ class _DataScreenState extends State<DataScreen> {
             height: 20,
           ),
           OutputAmount(
-            label: 'Tip Value',
+            label: 'TIP VALUE',
             helper: '(amount of tip from percent entered)',
             controller: tipValueController,
           ),
@@ -80,7 +80,7 @@ class _DataScreenState extends State<DataScreen> {
             height: 20,
           ),
           OutputAmount(
-            label: 'Total Value',
+            label: 'TOTAL VALUE',
             helper: '(final bill total)',
             controller: totalValueController,
           ),

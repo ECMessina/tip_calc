@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:tip_calc/constants.dart';
 import 'package:tip_calc/data_screen.dart';
 
 void main() {
@@ -13,19 +15,21 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 51, 51, 51),
+          backgroundColor: sigDkGrey,
           leading: const Icon(
+            size: 40,
             Icons.receipt_long,
-            color: Colors.green,
+            color: mainGreen,
           ),
-          title: const Text(
+          title: Text(
             'Tip Calculator',
-            style: TextStyle(
+            style: GoogleFonts.satisfy(
+              fontSize: 40,
               color: Colors.white,
             ),
           ),
         ),
-        backgroundColor: const Color.fromARGB(255, 129, 129, 129),
+        backgroundColor: const Color.fromARGB(255, 133, 127, 108),
         resizeToAvoidBottomInset: false,
         body: const DataScreen(),
       ),

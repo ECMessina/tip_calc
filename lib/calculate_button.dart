@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:tip_calc/constants.dart';
 
 class CalculateButton extends StatelessWidget {
   const CalculateButton({super.key, required this.onPressed});
@@ -11,17 +13,19 @@ class CalculateButton extends StatelessWidget {
       style: ButtonStyle(
         padding: MaterialStateProperty.all<EdgeInsets>(
           const EdgeInsets.only(
-            right: 75,
-            left: 75,
+            right: 150,
+            left: 150,
           ),
         ),
-        backgroundColor: MaterialStateProperty.all(Colors.green),
+        backgroundColor: MaterialStateProperty.all(mainGreen),
       ),
       onPressed: onPressed,
-      child: const Text(
+      child: Text(
         'Calculate',
-        style: TextStyle(
-          color: Colors.black,
+        style: GoogleFonts.satisfy(
+          fontSize: 23,
+          fontWeight: FontWeight.bold,
+          color: sigDkGrey,
         ),
       ),
     );

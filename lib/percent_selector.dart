@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tip_calc/constants.dart';
 
 class PercentSelector extends StatelessWidget {
   const PercentSelector({
@@ -13,11 +14,12 @@ class PercentSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      style: TextFieldStyle.kNumberTextStyle,
       decoration: InputDecoration(
-        icon: const Icon(
-          Icons.percent,
-          color: Colors.white,
-        ),
+        focusedBorder: kGreenOutlineInputBorder,
+        enabledBorder: kDkGreyOutlineInputBorder,
+        labelStyle: LabelStyle.kLabelStyle,
+        icon: kTextFieldPercentIcon,
         labelText: label,
       ),
       controller: controller,

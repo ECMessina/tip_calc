@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tip_calc/constants.dart';
 
 class OutputAmount extends StatelessWidget {
   const OutputAmount({
@@ -15,25 +16,15 @@ class OutputAmount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      style: TextFieldStyle.kNumberTextStyle,
       decoration: InputDecoration(
-        focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.green,
-            width: 2,
-          ),
-        ),
-        enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.green,
-            width: 2,
-          ),
-        ),
-        icon: const Icon(
-          Icons.attach_money,
-          color: Colors.green,
-        ),
+        labelStyle: LabelStyle.kLabelStyle,
+        focusedBorder: kGreenOutlineInputBorder,
+        enabledBorder: kGreenOutlineInputBorder,
+        icon: kTextFieldMoneyIcon,
         labelText: label,
         helperText: helper,
+        helperStyle: HelperStyle.kHelperStyle,
       ),
       controller: controller,
       readOnly: true,
