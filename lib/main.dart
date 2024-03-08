@@ -15,11 +15,11 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: sigDkGrey,
+          backgroundColor: kSigDkGrey,
           leading: const Icon(
             size: 40,
             Icons.receipt_long,
-            color: mainGreen,
+            color: kMainGreen,
           ),
           title: Text(
             'Tip Calculator',

@@ -1,25 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const Color sigDkGrey = Color.fromARGB(255, 51, 51, 51);
-const Color mainGreen = Colors.green;
+const Color kSigDkGrey = Color.fromARGB(255, 51, 51, 51);
+const Color kMainGreen = Colors.green;
 
-class TextFieldStyle {
+class TextFieldStyles {
   static final TextStyle kNumberTextStyle = GoogleFonts.satisfy(
     fontSize: 25,
   );
-}
-
-class LabelStyle {
   static final TextStyle kLabelStyle = GoogleFonts.sriracha(
-    color: sigDkGrey,
+    color: kSigDkGrey,
     fontSize: 20,
   );
-}
-
-class HelperStyle {
   static final TextStyle kHelperStyle = GoogleFonts.sriracha(
-    color: sigDkGrey,
+    color: kSigDkGrey,
     fontSize: 13,
   );
 }
@@ -27,7 +21,7 @@ class HelperStyle {
 const kTextFieldMoneyIcon = Icon(
   size: 35,
   Icons.attach_money,
-  color: mainGreen,
+  color: kMainGreen,
 );
 
 const kTextFieldPercentIcon = Icon(
@@ -38,14 +32,14 @@ const kTextFieldPercentIcon = Icon(
 
 const kDkGreyOutlineInputBorder = OutlineInputBorder(
   borderSide: BorderSide(
-    color: sigDkGrey,
+    color: kSigDkGrey,
     width: 2,
   ),
 );
 
 const kGreenOutlineInputBorder = OutlineInputBorder(
   borderSide: BorderSide(
-    color: mainGreen,
+    color: kMainGreen,
     width: 2,
   ),
 );

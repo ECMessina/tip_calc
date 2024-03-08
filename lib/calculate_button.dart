@@ -17,7 +17,7 @@ class CalculateButton extends StatelessWidget {
             left: 150,
           ),
         ),
-        backgroundColor: MaterialStateProperty.all(mainGreen),
+        backgroundColor: MaterialStateProperty.all(kMainGreen),
       ),
       onPressed: onPressed,
       child: Text(
@@ -25,7 +25,7 @@ class CalculateButton extends StatelessWidget {
         style: GoogleFonts.satisfy(
           fontSize: 23,
           fontWeight: FontWeight.bold,
-          color: sigDkGrey,
+          color: kSigDkGrey,
         ),
       ),
     );
