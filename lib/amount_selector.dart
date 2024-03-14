@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:tip_calc/constants.dart';
 
 class AmountSelector extends StatelessWidget {
@@ -28,6 +29,9 @@ class AmountSelector extends StatelessWidget {
       ),
       controller: controller,
       keyboardType: TextInputType.number,
+      inputFormatters: [
+        FilteringTextInputFormatter.allow(RegExp(r'^[1-9]\d*\.?\d{0,2}'))
+      ],
     );
   }
 }
