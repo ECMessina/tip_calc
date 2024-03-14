@@ -8,11 +8,13 @@ class AmountSelector extends StatelessWidget {
     required this.label,
     required this.helper,
     required this.controller,
+    required this.errorText,
   });
 
   final String label;
   final String helper;
   final TextEditingController? controller;
+  final String? errorText;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +28,7 @@ class AmountSelector extends StatelessWidget {
         labelText: label,
         helperText: helper,
         helperStyle: TextFieldStyles.kHelperStyle,
+        errorText: errorText,
       ),
       controller: controller,
       keyboardType: TextInputType.number,

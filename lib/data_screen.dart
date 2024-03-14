@@ -19,21 +19,101 @@ class _DataScreenState extends State<DataScreen> {
   final TextEditingController tipPercentageController = TextEditingController(text: defaultPercentTip.toString());
   final TextEditingController tipValueController = TextEditingController();
   final TextEditingController totalValueController = TextEditingController();
+  bool validate = false;
+  String? valueErrorText;
+  String? totalErrorText;
+  String? tipPercentErrorText;
+
+  @override
+  void initState() {
+    super.initState();
+    valueController.addListener(() {
+      var prev = valueErrorText;
+      getValueErrorText();
+      if (prev != valueErrorText) {
+        setState(() {});
+      }
+    });
+    totalController.addListener(() {
+      var prev = totalErrorText;
+      getTotalErrorText();
+      if (prev != totalErrorText) {
+        setState(() {});
+      }
+    });
+    tipPercentageController.addListener(() {
+      var prev = tipPercentErrorText;
+      getPercentErrorText();
+      if (prev != tipPercentErrorText) {
+        setState(() {});
+      }
+    });
+  }
+
+  void getValueErrorText() {
+    final valueText = valueController.text;
+
+    if (valueText.isEmpty) {
+      valueErrorText = 'Please enter the amount to tip on.';
+    } else {
+      valueErrorText = null;
+    }
+  }
+
+  void getTotalErrorText() {
+    final totalText = totalController.text;
+
+    if (totalText.isEmpty) {
+      totalErrorText = 'Please enter the bill amount.';
+    } else {
+      totalErrorText = null;
+    }
+  }
+
+  void getPercentErrorText() {
+    final tippercentText = tipPercentageController.text;
+
+    if (tippercentText.isEmpty) {
+      tipPercentErrorText = 'Please enter a tip percent.';
+    } else {
+      tipPercentErrorText = null;
+    }
+  }
 
   void tipCalc() {
-    double valueCheck = double.tryParse(valueController.text) ?? 0;
-    double totalCheck = double.tryParse(totalController.text) ?? 0;
-    int tipPercentCheck = int.tryParse(tipPercentageController.text) ?? 0;
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      validate = true;
+    });
+    double valueCheck = double.parse(valueController.text);
+    double totalCheck = double.parse(totalController.text);
+    int tipPercentCheck = int.parse(tipPercentageController.text);
+
+    if (valueController.text.isEmpty || totalController.text.isEmpty || tipPercentageController.text.isEmpty) {
+      setState(() {});
+    }
 
     double tipValue = valueCheck * tipPercentCheck / 100;
     double totalValue = totalCheck + tipValue;
 
     setState(() {
-      tipValueController.text = tipValue.toString();
-      totalValueController.text = totalValue.toString();
+      valueController.text = valueCheck.toStringAsFixed(2);
+      totalController.text = totalCheck.toStringAsFixed(2);
+      tipValueController.text = tipValue.toStringAsFixed(2);
+      totalValueController.text = totalValue.toStringAsFixed(2);
     });
 
     FocusScope.of(context).unfocus();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    valueController.removeListener(() {
+      valueController.text;
+    });
+    totalController.removeListener(() {
+      totalController.text;
+    });
   }
 
   @override
@@ -46,6 +126,7 @@ class _DataScreenState extends State<DataScreen> {
             label: 'VALUE',
             helper: '(pre-tax, pre-coupon)',
             controller: valueController,
+            errorText: validate ? valueErrorText : null,
           ),
           const SizedBox(
             height: 20,
@@ -54,6 +135,7 @@ class _DataScreenState extends State<DataScreen> {
             label: 'TOTAL',
             helper: '(prior to tip)',
             controller: totalController,
+            errorText: validate ? totalErrorText : null,
           ),
           const SizedBox(
             height: 20,
@@ -61,6 +143,7 @@ class _DataScreenState extends State<DataScreen> {
           PercentSelector(
             label: 'TIP',
             controller: tipPercentageController,
+            errorText: validate ? tipPercentErrorText : null,
           ),
           const SizedBox(
             height: 20,
