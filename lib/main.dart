@@ -24,7 +24,7 @@ class MainApp extends StatelessWidget {
           title: Text(
             'Tip Calculator',
             style: GoogleFonts.satisfy(
-              fontSize: 40,
+              fontSize: 30,
               color: Colors.white,
             ),
           ),

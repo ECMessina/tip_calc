@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:tip_calc/calculate_button.dart';
 import 'package:tip_calc/amount_selector.dart';
 import 'package:tip_calc/output_amount.dart';
@@ -121,6 +122,7 @@ class _DataScreenState extends State<DataScreen> {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           AmountSelector(
             label: 'VALUE',
@@ -128,39 +130,24 @@ class _DataScreenState extends State<DataScreen> {
             controller: valueController,
             errorText: validate ? valueErrorText : null,
           ),
-          const SizedBox(
-            height: 20,
-          ),
           AmountSelector(
             label: 'TOTAL',
             helper: '(prior to tip)',
             controller: totalController,
             errorText: validate ? totalErrorText : null,
           ),
-          const SizedBox(
-            height: 20,
-          ),
           PercentSelector(
             label: 'TIP',
             controller: tipPercentageController,
             errorText: validate ? tipPercentErrorText : null,
           ),
-          const SizedBox(
-            height: 20,
-          ),
           CalculateButton(
             onPressed: tipCalc,
-          ),
-          const SizedBox(
-            height: 20,
           ),
           OutputAmount(
             label: 'TIP VALUE',
             helper: '(amount of tip from percent entered)',
             controller: tipValueController,
-          ),
-          const SizedBox(
-            height: 20,
           ),
           OutputAmount(
             label: 'TOTAL VALUE',

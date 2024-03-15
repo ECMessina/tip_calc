@@ -13,8 +13,10 @@ class CalculateButton extends StatelessWidget {
       style: ButtonStyle(
         padding: MaterialStateProperty.all<EdgeInsets>(
           const EdgeInsets.only(
-            right: 150,
-            left: 150,
+            top: 10,
+            bottom: 10,
+            right: 125,
+            left: 125,
           ),
         ),
         backgroundColor: MaterialStateProperty.all(kMainGreen),
