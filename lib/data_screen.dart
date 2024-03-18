@@ -108,13 +108,9 @@ class _DataScreenState extends State<DataScreen> {
 
   @override
   void dispose() {
+    valueController.dispose();
+    totalController.dispose();
     super.dispose();
-    valueController.removeListener(() {
-      valueController.text;
-    });
-    totalController.removeListener(() {
-      totalController.text;
-    });
   }
 
   @override
