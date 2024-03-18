@@ -7,11 +7,11 @@ class PercentSelector extends StatelessWidget {
     super.key,
     required this.label,
     required this.controller,
-    required this.errorText,
+    this.errorText,
   });
 
   final String label;
-  final TextEditingController? controller;
+  final TextEditingController controller;
   final String? errorText;
 
   @override

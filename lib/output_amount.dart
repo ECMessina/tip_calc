@@ -11,7 +11,7 @@ class OutputAmount extends StatelessWidget {
 
   final String label;
   final String helper;
-  final TextEditingController? controller;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
