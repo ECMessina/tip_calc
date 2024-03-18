@@ -19,15 +19,15 @@ class AmountSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      style: TextFieldStyles.kNumberTextStyle,
+      style: TextFieldStyles.numberTextStyle,
       decoration: InputDecoration(
-        focusedBorder: kGreenOutlineInputBorder,
-        enabledBorder: kDkGreyOutlineInputBorder,
-        labelStyle: TextFieldStyles.kLabelStyle,
-        icon: kTextFieldMoneyIcon,
+        focusedBorder: Boarders.greenOutlineInputBorder,
+        enabledBorder: Boarders.dkGreyOutlineInputBorder,
+        labelStyle: TextFieldStyles.labelStyle,
+        icon: AppIcons.textFieldMoneyIcon,
         labelText: label,
         helperText: helper,
-        helperStyle: TextFieldStyles.kHelperStyle,
+        helperStyle: TextFieldStyles.helperStyle,
         errorText: errorText,
       ),
       controller: controller,

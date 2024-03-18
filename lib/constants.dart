@@ -1,45 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const Color kSigDkGrey = Color.fromARGB(255, 51, 51, 51);
-const Color kMainGreen = Colors.green;
+const int kDefaultPercentTip = 20;
+
+class SignatureColors {
+  static const Color dkGrey = Color.fromARGB(255, 51, 51, 51);
+  static const Color mainGreen = Colors.green;
+}
 
 class TextFieldStyles {
-  static final TextStyle kNumberTextStyle = GoogleFonts.satisfy(
+  static final TextStyle numberTextStyle = GoogleFonts.satisfy(
     fontSize: 25,
   );
-  static final TextStyle kLabelStyle = GoogleFonts.sriracha(
-    color: kSigDkGrey,
+  static final TextStyle labelStyle = GoogleFonts.sriracha(
+    color: SignatureColors.dkGrey,
     fontSize: 20,
   );
-  static final TextStyle kHelperStyle = GoogleFonts.sriracha(
-    color: kSigDkGrey,
+  static final TextStyle helperStyle = GoogleFonts.sriracha(
+    color: SignatureColors.dkGrey,
     fontSize: 13,
   );
 }
 
-const kTextFieldMoneyIcon = Icon(
-  size: 35,
-  Icons.attach_money,
-  color: kMainGreen,
-);
+class AppIcons {
+  static const textFieldMoneyIcon = Icon(
+    size: 35,
+    Icons.attach_money,
+    color: SignatureColors.mainGreen,
+  );
 
-const kTextFieldPercentIcon = Icon(
-  size: 30,
-  Icons.percent,
-  color: Colors.white,
-);
+  static const textFieldPercentIcon = Icon(
+    size: 30,
+    Icons.percent,
+    color: Colors.white,
+  );
+}
 
-const kDkGreyOutlineInputBorder = OutlineInputBorder(
-  borderSide: BorderSide(
-    color: kSigDkGrey,
-    width: 2,
-  ),
-);
+class Boarders {
+  static const dkGreyOutlineInputBorder = OutlineInputBorder(
+    borderSide: BorderSide(
+      color: SignatureColors.dkGrey,
+      width: 2,
+    ),
+  );
 
-const kGreenOutlineInputBorder = OutlineInputBorder(
-  borderSide: BorderSide(
-    color: kMainGreen,
-    width: 2,
-  ),
-);
+  static const greenOutlineInputBorder = OutlineInputBorder(
+    borderSide: BorderSide(
+      color: SignatureColors.mainGreen,
+      width: 2,
+    ),
+  );
+}

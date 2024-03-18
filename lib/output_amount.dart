@@ -16,15 +16,15 @@ class OutputAmount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      style: TextFieldStyles.kNumberTextStyle,
+      style: TextFieldStyles.numberTextStyle,
       decoration: InputDecoration(
-        labelStyle: TextFieldStyles.kLabelStyle,
-        focusedBorder: kGreenOutlineInputBorder,
-        enabledBorder: kGreenOutlineInputBorder,
-        icon: kTextFieldMoneyIcon,
+        labelStyle: TextFieldStyles.labelStyle,
+        focusedBorder: Boarders.greenOutlineInputBorder,
+        enabledBorder: Boarders.greenOutlineInputBorder,
+        icon: AppIcons.textFieldMoneyIcon,
         labelText: label,
         helperText: helper,
-        helperStyle: TextFieldStyles.kHelperStyle,
+        helperStyle: TextFieldStyles.helperStyle,
       ),
       controller: controller,
       readOnly: true,

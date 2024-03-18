@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:tip_calc/calculate_button.dart';
 import 'package:tip_calc/amount_selector.dart';
+import 'package:tip_calc/constants.dart';
 import 'package:tip_calc/output_amount.dart';
 import 'package:tip_calc/percent_selector.dart';
 
@@ -12,12 +13,10 @@ class DataScreen extends StatefulWidget {
   State<DataScreen> createState() => _DataScreenState();
 }
 
-int defaultPercentTip = 20;
-
 class _DataScreenState extends State<DataScreen> {
   final TextEditingController valueController = TextEditingController();
   final TextEditingController totalController = TextEditingController();
-  final TextEditingController tipPercentageController = TextEditingController(text: defaultPercentTip.toString());
+  late final TextEditingController tipPercentageController;
   final TextEditingController tipValueController = TextEditingController();
   final TextEditingController totalValueController = TextEditingController();
   bool validate = false;
@@ -28,6 +27,7 @@ class _DataScreenState extends State<DataScreen> {
   @override
   void initState() {
     super.initState();
+    tipPercentageController = TextEditingController(text: kDefaultPercentTip.toString());
     valueController.addListener(() {
       var prev = valueErrorText;
       getValueErrorText();
@@ -72,9 +72,9 @@ class _DataScreenState extends State<DataScreen> {
   }
 
   void getPercentErrorText() {
-    final tippercentText = tipPercentageController.text;
+    final tipPercentText = tipPercentageController.text;
 
-    if (tippercentText.isEmpty) {
+    if (tipPercentText.isEmpty) {
       tipPercentErrorText = 'Please enter a tip percent.';
     } else {
       tipPercentErrorText = null;

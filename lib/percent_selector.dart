@@ -17,12 +17,12 @@ class PercentSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      style: TextFieldStyles.kNumberTextStyle,
+      style: TextFieldStyles.numberTextStyle,
       decoration: InputDecoration(
-        focusedBorder: kGreenOutlineInputBorder,
-        enabledBorder: kDkGreyOutlineInputBorder,
-        labelStyle: TextFieldStyles.kLabelStyle,
-        icon: kTextFieldPercentIcon,
+        focusedBorder: Boarders.greenOutlineInputBorder,
+        enabledBorder: Boarders.dkGreyOutlineInputBorder,
+        labelStyle: TextFieldStyles.labelStyle,
+        icon: AppIcons.textFieldPercentIcon,
         labelText: label,
         errorText: errorText,
       ),
