@@ -82,16 +82,16 @@ class _DataScreenState extends State<DataScreen> {
   }
 
   void tipCalc() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      validate = true;
-    });
+    if (valueController.text.isEmpty || totalController.text.isEmpty || tipPercentageController.text.isEmpty) {
+      setState(() {
+        validate = true;
+      });
+      FocusScope.of(context).unfocus();
+    }
+
     double valueCheck = double.parse(valueController.text);
     double totalCheck = double.parse(totalController.text);
     int tipPercentCheck = int.parse(tipPercentageController.text);
-
-    if (valueController.text.isEmpty || totalController.text.isEmpty || tipPercentageController.text.isEmpty) {
-      setState(() {});
-    }
 
     double tipValue = valueCheck * tipPercentCheck / 100;
     double totalValue = totalCheck + tipValue;
@@ -102,8 +102,6 @@ class _DataScreenState extends State<DataScreen> {
       tipValueController.text = tipValue.toStringAsFixed(2);
       totalValueController.text = totalValue.toStringAsFixed(2);
     });
-
-    FocusScope.of(context).unfocus();
   }
 
   @override
