@@ -14,79 +14,20 @@ class DataScreen extends StatefulWidget {
 }
 
 class _DataScreenState extends State<DataScreen> {
+  final formKey = GlobalKey<FormState>();
   final TextEditingController valueController = TextEditingController();
   final TextEditingController totalController = TextEditingController();
-  late final TextEditingController tipPercentageController;
+  final TextEditingController tipPercentageController = TextEditingController(text: kDefaultPercentTip.toString());
   final TextEditingController tipValueController = TextEditingController();
   final TextEditingController totalValueController = TextEditingController();
-  bool validate = false;
-  String? valueErrorText;
-  String? totalErrorText;
-  String? tipPercentErrorText;
-
-  @override
-  void initState() {
-    super.initState();
-    tipPercentageController = TextEditingController(text: kDefaultPercentTip.toString());
-    valueController.addListener(() {
-      var prev = valueErrorText;
-      getValueErrorText();
-      if (prev != valueErrorText) {
-        setState(() {});
-      }
-    });
-    totalController.addListener(() {
-      var prev = totalErrorText;
-      getTotalErrorText();
-      if (prev != totalErrorText) {
-        setState(() {});
-      }
-    });
-    tipPercentageController.addListener(() {
-      var prev = tipPercentErrorText;
-      getPercentErrorText();
-      if (prev != tipPercentErrorText) {
-        setState(() {});
-      }
-    });
-  }
-
-  void getValueErrorText() {
-    final valueText = valueController.text;
-
-    if (valueText.isEmpty) {
-      valueErrorText = 'Please enter the amount to tip on.';
-    } else {
-      valueErrorText = null;
-    }
-  }
-
-  void getTotalErrorText() {
-    final totalText = totalController.text;
-
-    if (totalText.isEmpty) {
-      totalErrorText = 'Please enter the bill amount.';
-    } else {
-      totalErrorText = null;
-    }
-  }
-
-  void getPercentErrorText() {
-    final tipPercentText = tipPercentageController.text;
-
-    if (tipPercentText.isEmpty) {
-      tipPercentErrorText = 'Please enter a tip percent.';
-    } else {
-      tipPercentErrorText = null;
-    }
-  }
 
   void tipCalc() {
-    if (valueController.text.isEmpty || totalController.text.isEmpty || tipPercentageController.text.isEmpty) {
-      setState(() {
-        validate = true;
-      });
-      FocusScope.of(context).unfocus();
+    FocusScope.of(context).unfocus();
+
+    if (!formKey.currentState!.validate()) {
+      tipValueController.text = '';
+      totalValueController.text = '';
+      return;
     }
 
     double valueCheck = double.parse(valueController.text);
@@ -108,6 +49,9 @@ class _DataScreenState extends State<DataScreen> {
   void dispose() {
     valueController.dispose();
     totalController.dispose();
+    tipPercentageController.dispose();
+    tipValueController.dispose();
+    totalValueController.dispose();
     super.dispose();
   }
 
@@ -115,40 +59,58 @@ class _DataScreenState extends State<DataScreen> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          AmountSelector(
-            label: 'VALUE',
-            helper: '(pre-tax, pre-coupon)',
-            controller: valueController,
-            errorText: validate ? valueErrorText : null,
-          ),
-          AmountSelector(
-            label: 'TOTAL',
-            helper: '(prior to tip)',
-            controller: totalController,
-            errorText: validate ? totalErrorText : null,
-          ),
-          PercentSelector(
-            label: 'TIP',
-            controller: tipPercentageController,
-            errorText: validate ? tipPercentErrorText : null,
-          ),
-          CalculateButton(
-            onPressed: tipCalc,
-          ),
-          OutputAmount(
-            label: 'TIP VALUE',
-            helper: '(amount of tip from percent entered)',
-            controller: tipValueController,
-          ),
-          OutputAmount(
-            label: 'TOTAL VALUE',
-            helper: '(final bill total)',
-            controller: totalValueController,
-          ),
-        ],
+      child: Form(
+        key: formKey,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            AmountSelector(
+              label: 'VALUE',
+              helper: '(pre-tax, pre-coupon)',
+              controller: valueController,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter the amount to tip on.';
+                }
+                return null;
+              },
+            ),
+            AmountSelector(
+              label: 'TOTAL',
+              helper: '(prior to tip)',
+              controller: totalController,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter the bill amount.';
+                }
+                return null;
+              },
+            ),
+            PercentSelector(
+              label: 'TIP',
+              controller: tipPercentageController,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter a tip percent.';
+                }
+                return null;
+              },
+            ),
+            CalculateButton(
+              onPressed: tipCalc,
+            ),
+            OutputAmount(
+              label: 'TIP VALUE',
+              helper: '(amount of tip from percent entered)',
+              controller: tipValueController,
+            ),
+            OutputAmount(
+              label: 'TOTAL VALUE',
+              helper: '(final bill total)',
+              controller: totalValueController,
+            ),
+          ],
+        ),
       ),
     );
   }

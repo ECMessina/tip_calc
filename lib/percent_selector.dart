@@ -7,24 +7,25 @@ class PercentSelector extends StatelessWidget {
     super.key,
     required this.label,
     required this.controller,
-    this.errorText,
+    required this.validator,
   });
 
   final String label;
   final TextEditingController controller;
-  final String? errorText;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      validator: validator,
       style: TextFieldStyles.numberTextStyle,
       decoration: InputDecoration(
-        focusedBorder: Boarders.greenOutlineInputBorder,
-        enabledBorder: Boarders.dkGreyOutlineInputBorder,
+        focusedBorder: Borders.greenOutlineInputBorder,
+        enabledBorder: Borders.dkGreyOutlineInputBorder,
         labelStyle: TextFieldStyles.labelStyle,
         icon: AppIcons.textFieldPercentIcon,
         labelText: label,
-        errorText: errorText,
       ),
       controller: controller,
       keyboardType: TextInputType.number,

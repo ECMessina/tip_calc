@@ -36,7 +36,7 @@ class AppIcons {
   );
 }
 
-class Boarders {
+class Borders {
   static const dkGreyOutlineInputBorder = OutlineInputBorder(
     borderSide: BorderSide(
       color: SignatureColors.dkGrey,

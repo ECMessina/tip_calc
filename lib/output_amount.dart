@@ -19,8 +19,8 @@ class OutputAmount extends StatelessWidget {
       style: TextFieldStyles.numberTextStyle,
       decoration: InputDecoration(
         labelStyle: TextFieldStyles.labelStyle,
-        focusedBorder: Boarders.greenOutlineInputBorder,
-        enabledBorder: Boarders.greenOutlineInputBorder,
+        focusedBorder: Borders.greenOutlineInputBorder,
+        enabledBorder: Borders.greenOutlineInputBorder,
         icon: AppIcons.textFieldMoneyIcon,
         labelText: label,
         helperText: helper,
