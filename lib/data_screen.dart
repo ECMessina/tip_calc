@@ -20,7 +20,7 @@ class _DataScreenState extends State<DataScreen> {
   final TextEditingController tipPercentageController = TextEditingController(text: kDefaultPercentTip.toString());
   final TextEditingController tipValueController = TextEditingController();
   final TextEditingController totalValueController = TextEditingController();
-  bool visible = true;
+  bool visible = false;
 
   void tipCalc() {
     FocusScope.of(context).unfocus();
@@ -29,8 +29,12 @@ class _DataScreenState extends State<DataScreen> {
       setState(() {
         visible = false;
       });
+
       return;
     }
+    setState(() {
+      visible = true;
+    });
 
     double valueCheck = double.parse(valueController.text);
     double totalCheck = double.parse(totalController.text);
