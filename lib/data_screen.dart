@@ -32,9 +32,6 @@ class _DataScreenState extends State<DataScreen> {
 
       return;
     }
-    setState(() {
-      visible = true;
-    });
 
     double valueCheck = double.parse(valueController.text);
     double totalCheck = double.parse(totalController.text);
@@ -44,6 +41,7 @@ class _DataScreenState extends State<DataScreen> {
     double totalValue = totalCheck + tipValue;
 
     setState(() {
+      visible = true;
       valueController.text = valueCheck.toStringAsFixed(2);
       totalController.text = totalCheck.toStringAsFixed(2);
       tipValueController.text = tipValue.toStringAsFixed(2);
