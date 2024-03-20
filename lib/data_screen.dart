@@ -20,13 +20,15 @@ class _DataScreenState extends State<DataScreen> {
   final TextEditingController tipPercentageController = TextEditingController(text: kDefaultPercentTip.toString());
   final TextEditingController tipValueController = TextEditingController();
   final TextEditingController totalValueController = TextEditingController();
+  bool visible = true;
 
   void tipCalc() {
     FocusScope.of(context).unfocus();
 
     if (!formKey.currentState!.validate()) {
-      tipValueController.text = '';
-      totalValueController.text = '';
+      setState(() {
+        visible = false;
+      });
       return;
     }
 
@@ -103,11 +105,13 @@ class _DataScreenState extends State<DataScreen> {
               label: 'TIP VALUE',
               helper: '(amount of tip from percent entered)',
               controller: tipValueController,
+              visible: visible,
             ),
             OutputAmount(
               label: 'TOTAL VALUE',
               helper: '(final bill total)',
               controller: totalValueController,
+              visible: visible,
             ),
           ],
         ),
