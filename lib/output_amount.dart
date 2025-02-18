@@ -23,15 +23,15 @@ class OutputAmount extends StatelessWidget {
       maintainAnimation: true,
       visible: visible,
       child: TextField(
-        style: TextFieldStyles.numberTextStyle,
+        style: AppTextStyles.numberTextStyle,
         decoration: InputDecoration(
-          labelStyle: TextFieldStyles.labelStyle,
+          labelStyle: AppTextStyles.labelStyle,
           focusedBorder: Borders.greenOutlineInputBorder,
           enabledBorder: Borders.greenOutlineInputBorder,
           icon: AppIcons.textFieldMoneyIcon,
           labelText: label,
           helperText: helper,
-          helperStyle: TextFieldStyles.helperStyle,
+          helperStyle: AppTextStyles.helperStyle,
         ),
         controller: controller,
         readOnly: true,
