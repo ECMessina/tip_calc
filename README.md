@@ -1,3 +1,3 @@
-# tip_calc
+# Tip?
 
-A Flutter app that utilizes forms and arithmetic operations to generate receipt data based on user input.
+A simple mobile tip calculator using Flutter with a custom form-based UI and built-in arithmetic logic.

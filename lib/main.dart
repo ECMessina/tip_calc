@@ -8,6 +8,8 @@ void main() {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]).then((_) {
-    runApp(const MaterialApp(home: StartScreen()));
+    runApp(
+      const MaterialApp(debugShowCheckedModeBanner: false, home: StartScreen()),
+    );
   });
 }
